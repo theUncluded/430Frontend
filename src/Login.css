@@ -1,0 +1,64 @@
+/* AuthModal.css */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    width: 300px;
+    max-width: 90%;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.modal h2 {
+    margin-bottom: 1em;
+    font-size: 1.5em;
+    text-align: center;
+}
+
+.modal label {
+    display: block;
+    margin-bottom: 1em;
+}
+
+.modal input[type="email"],
+.modal input[type="password"] {
+    width: 100%;
+    padding: 8px;
+    margin-top: 4px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.register-checkbox {
+    display: flex;
+    align-items: center;
+}
+
+.auth-submit-button,
+.close-modal-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-top: 1em;
+}
+
+.auth-submit-button:hover,
+.close-modal-button:hover {
+    background-color: #0056b3;
+}

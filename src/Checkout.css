@@ -1,0 +1,10 @@
+.CheckoutPage {
+    font-family: 'Public Sans', sans-serif;
+    text-align: left;
+    padding-top: 15px;
+    border-left-color: 20px;
+    margin-left: 5%; 
+    min-height: 80vh;
+    background: #ffffff; 
+  }
+  

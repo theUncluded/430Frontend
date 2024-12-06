@@ -1,0 +1,287 @@
+/* Baseline */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Header */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    height: 60px;
+}
+
+.logo {
+    text-decoration: none;
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-right: 20px;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+}
+
+.nav-links a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+}
+
+/* Header search bar styling */
+.search-bar-container {
+    position: relative;
+    width: 300px;
+}
+
+.search-bar-container input {
+    width: 100%;
+    padding: 8px 30px 8px 15px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    font-size: 14px;
+}
+
+
+.clear-btn {
+    position: absolute;
+    right: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    color: #aaa;
+}
+
+.icons {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-weight: 500;
+    color: #333;
+}
+
+.cart-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+    color: #333;
+    display: flex;
+    align-items: center;
+}
+
+/* Cart Sidebar */
+.cart-sidebar {
+    position: fixed;
+    top: 0;
+    right: -300px;
+    width: 300px;
+    height: 100%;
+    background-color: #fff;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+    transition: right 0.3s ease;
+    padding: 20px;
+    z-index: 999;
+}
+
+.cart-sidebar.open {
+    right: 0;
+}
+
+.cart-sidebar h2 {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.cart-sidebar p {
+    text-align: center;
+}
+
+.cart-sidebar .close-btn {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    border: none;
+    background-color: #333;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+body {
+    padding-top: 60px;
+}
+
+/* Autocomplete */
+.autocomplete-container {
+    border: 1px solid #ddd;
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 1001;
+    position: absolute;
+}
+
+.autocomplete-item {
+    padding: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.autocomplete-item:hover {
+    background-color: #f0f0f0;
+}
+.cart-sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.cart-item-image {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    margin-right: 10px;
+    border-radius: 4px;
+}
+
+.cart-item-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.cart-item-title {
+    font-size: 14px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.cart-item-price {
+    font-size: 12px;
+    color: #555;
+}
+
+.search-bar-container {
+    position: relative;
+    width: 300px;
+}
+
+.autocomplete-container {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 10;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.autocomplete-item {
+    padding: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.autocomplete-item:hover {
+    background-color: #f0f0f0;
+}
+
+/* Header search bar styling */
+.search-bar-container {
+    position: relative;
+    width: 300px;
+}
+
+.search-bar-container input {
+    width: 100%;
+    padding: 8px 30px 8px 15px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    font-size: 14px;
+}
+
+/* Header.css */
+
+/* Style for the login button */
+.login-button, .user-button {
+    background-color: #4CAF50;  /* Green */
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-left: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.login-button:hover, .user-button:hover {
+    background-color: #45a049;  /* Darker green on hover */
+}
+
+/* Style for the user menu dropdown */
+.user-menu {
+    position: relative;
+    display: inline-block;
+}
+
+.user-menu-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: white;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    min-width: 120px;
+    z-index: 1;
+}
+
+.user-menu:hover .user-menu-content {
+    display: block;
+}
+
+/* Style for the dropdown logout button */
+.logout-button {
+    padding: 8px;
+    background: none;
+    border: none;
+    color: #333;
+    text-align: left;
+    width: 100%;
+    cursor: pointer;
+}
+
+.logout-button:hover {
+    background-color: #f2f2f2;
+    color: #4CAF50;
+}

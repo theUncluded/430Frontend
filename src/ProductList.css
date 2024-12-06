@@ -1,0 +1,201 @@
+/* Main container for the product list page */
+.product-list-container {
+    display: flex;
+}
+
+/* Sidebar styling */
+.sidebar {
+    width: 250px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-right: 1px solid #ddd;
+    flex-shrink: 0;
+    position: sticky; /* Keeps the sidebar in view when scrolling */
+    top: 0; /* Keeps the sidebar fixed to the top of the viewport */
+    height: 100vh;
+}
+
+.sidebar input[type="text"],
+.sidebar input[type="number"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+#ratingOptions, #categoryOptions {
+    margin-bottom: 15px;
+}
+
+#ratingOptions label,
+#categoryOptions label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+#ratingOptions label input,
+#categoryOptions label input {
+    margin-right: 8px;
+}
+
+/* Content area for sorting and products */
+.product-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+/* Sorting button container */
+.sorting {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.sorting button {
+    padding: 5px 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Products grid layout */
+.products {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+/* Individual product card styling */
+.product-card {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+    background-color: #fff;
+    transition: box-shadow 0.2s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.product-card:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Product image styling */
+.product-card img {
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
+    border-radius: 4px;
+    margin-bottom: 8px;
+}
+
+/* Product rating styling */
+.product-rating {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 8px;
+}
+
+/* Title and price container within the product card */
+.product-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 5px 0;
+}
+
+/* Product title styling */
+.product-title {
+    font-size: 14px;
+    font-weight: bold;
+    flex: 1;
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-right: 10px;
+}
+
+/* Product price styling */
+.product-price {
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+    text-align: right;
+    min-width: 60px;
+}
+
+/* Add to cart button styling */
+.add-to-cart {
+    padding: 5px 10px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.add-to-cart:hover {
+    background-color: #f0f0f0;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.clear-search-btn {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.clear-search-btn:hover {
+    background-color: #d32f2f;
+}
+/* Sidebar search bar container */
+.search-bar-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+    width: 100%; /* Ensures it stays within sidebar width */
+    box-sizing: border-box;
+}
+
+/* Sidebar search input */
+.search-bar-container input {
+    flex-grow: 1;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 100%; /* Prevents overflow */
+}
+
+/* Clear button */
+.clear-search-btn {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    white-space: nowrap; /* Prevents text overflow */
+}
+
+.clear-search-btn:hover {
+    background-color: #d32f2f;
+}
