@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Header from './Header';
+import Header from './Navbar';
 import ProductList from './ProductList';
 import ProductGrid from './ProductGrid';
 import AdminPanel from './AdminPanel';

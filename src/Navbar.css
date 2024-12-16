@@ -1,0 +1,112 @@
+/* Navbar container */
+.navbar {
+    background-color: #4b93ff;
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    font-size: 1.2rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 20;
+    box-sizing: border-box;
+}
+
+/* Nav container */
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 2000px;
+}
+
+/* Store name aligned left */
+.nav-logo {
+    color: #f7cb5b;
+    text-decoration: none;
+    font-size: 2rem;
+    font-weight: bold;
+    white-space: nowrap;
+    margin-right: 20px;
+    cursor: pointer;
+}
+.nav-links {
+    color: #fff;
+    text-decoration: none;
+    padding: 0.5rem 1rem; /* Padding for nav links */
+}
+.nav-menu {
+    display: flex;
+    list-style: none;
+    text-align: center;
+}
+.fa-code {
+    margin-left: 1rem;
+}
+/* Search bar centered */
+.search-bar-container {
+    flex: 1; /* Takes up space to push nav items to the right */
+    display: flex;
+    padding-top: 19px;
+    justify-content: center; /* Centered horizontally */
+}
+
+.search-bar-container input {
+    padding: 0px 0px;
+    border-radius: 1px;
+    border: 1px solid #ccc;
+    width: 250px;
+    font-size: 1rem;
+    outline: none;
+}
+
+/* Nav menu aligned to the right but buttons centered */
+.nav-menu {
+    display: flex;
+    justify-content: right; /* Center the buttons within their space */
+    list-style: none;
+    margin: 0;
+    
+    margin-right: 0px; /* Space from the edge */
+}
+
+.nav-item {
+    margin-left: 0px; /* Space between buttons */
+}
+
+.nav-links {
+    color: #fff;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    white-space: nowrap;
+    transition: color 0.3s ease;
+}
+
+.nav-links:hover {
+    color: #ffdd40;
+}
+
+/* Responsive Fix */
+@media screen and (max-width: 960px) {
+    .nav-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .nav-menu {
+        flex-direction: column;
+        margin-top: 20px;
+    }
+
+    .search-bar-container {
+        margin: 10px 0;
+    }
+
+    .nav-logo {
+        margin-bottom: 10px;
+    }
+}
