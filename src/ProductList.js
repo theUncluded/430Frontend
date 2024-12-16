@@ -157,12 +157,37 @@ const ProductList = () => {
                     {filteredProducts.map(product => (
                         <div key={product.product_id} className="product-card">
                             <img src={`/Images/${product.product_id}.jpg`} alt={product.product_name} onError={(e) => e.target.src = '/images/default.jpg'} />
-                            <p className="product-rating">Rating: {product.rating}</p>
+                            <p className="product-rating">
+                            {Array.from({ length: 5 }, (_, index) => {
+                                const starValue = index + 1;
+                                return (
+                                <span
+                                    key={index}
+                                    className={`star ${
+                                    product.rating >= starValue
+                                        ? "filled"
+                                        : product.rating > index
+                                        ? "partial"
+                                        : ""
+                                    }`}
+                                    style={{
+                                    "--star-fill": `${Math.min(
+                                        Math.max(product.rating - index, 0),
+                                        1
+                                    ) * 100}%`,
+                                    }}
+                                >
+                                    &#9733;
+                                </span>
+                                );
+                            })}
+                            <span className="numeric-rating">{product.rating.toFixed(1)}</span>
+                            </p>
                             <div className="product-info">
                                 <p className="product-title" title={product.product_name}>{product.product_name}</p>
                                 <p className="product-price">${product.price}</p>
                             </div>
-                            <button onClick={() => addToCart(product)}>Add to Cart</button>
+                            <button className="add-to-cart" onClick={() => addToCart(product)}>Add to Cart</button>
                         </div>
                     ))}
                 </div>

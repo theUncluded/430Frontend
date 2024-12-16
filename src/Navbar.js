@@ -96,7 +96,7 @@ function Navbar() {
           <div className="search-bar-container">
             <input
               type="text"
-              placeholder="Search for Products"
+              placeholder="Search"
               value={searchTerm}
               onChange={handleSearchChange}
               onKeyDown={handleKeyPress}

@@ -10,8 +10,8 @@
     background-color: #f9f9f9;
     border-right: 1px solid #ddd;
     flex-shrink: 0;
-    position: sticky; /* Keeps the sidebar in view when scrolling */
-    top: 0; /* Keeps the sidebar fixed to the top of the viewport */
+    position: sticky; 
+    top: 0; 
     height: 100vh;
 }
 
@@ -69,10 +69,10 @@
     gap: 20px;
 }
 
-/* Individual product card styling */
+
 .product-card {
     border: 1px solid #ddd;
-    padding: 10px;
+    padding: 8px;
     text-align: center;
     background-color: #fff;
     transition: box-shadow 0.2s;
@@ -81,6 +81,8 @@
     align-items: center;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    gap: 8px; 
+    max-height: 340px; 
 }
 
 .product-card:hover {
@@ -112,7 +114,6 @@
     padding: 5px 0;
 }
 
-/* Product title styling */
 .product-title {
     font-size: 14px;
     font-weight: bold;
@@ -124,7 +125,7 @@
     margin-right: 10px;
 }
 
-/* Product price styling */
+
 .product-price {
     font-size: 14px;
     font-weight: bold;
@@ -133,20 +134,26 @@
     min-width: 60px;
 }
 
-/* Add to cart button styling */
+
+
 .add-to-cart {
-    padding: 5px 10px;
-    font-size: 14px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+    background-color: #0071e3;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 10px;
     cursor: pointer;
-    margin-top: 10px;
-}
-
-.add-to-cart:hover {
-    background-color: #f0f0f0;
-}
-
+    font-size: 1em;
+    transition: background-color 0.2s;
+    box-sizing: border-box;
+    margin-top: auto;
+    width: 100%;
+  }
+  
+  .add-to-cart:hover {
+    background-color: #005bb5;
+  }
+  
 .search-bar {
     display: flex;
     align-items: center;
@@ -172,7 +179,7 @@
     align-items: center;
     gap: 8px;
     margin-bottom: 16px;
-    width: 100%; /* Ensures it stays within sidebar width */
+    width: 100%; 
     box-sizing: border-box;
 }
 
@@ -182,7 +189,7 @@
     padding: 8px;
     border: 1px solid #ddd;
     border-radius: 4px;
-    width: 100%; /* Prevents overflow */
+    width: 100%; 
 }
 
 /* Clear button */
@@ -199,3 +206,47 @@
 .clear-search-btn:hover {
     background-color: #d32f2f;
 }
+.product-rating {
+    display: flex;
+    flex-direction: row; 
+    align-items: center;
+    gap: 4px; 
+  }
+  .product-rating .numeric-rating {
+    font-size: 1rem; 
+    color: #000000; 
+    margin-left: 6px;
+    padding-top: 3px;
+    vertical-align: middle; 
+  }
+  
+  .product-rating .star {
+    position: relative;
+    font-size: 1.6rem; 
+    color: #ccc; 
+    display: inline-block;
+    line-height: 1;
+    width: 1em; 
+    height: 1em;
+    overflow: hidden;
+  }
+  
+  .product-rating .star::before {
+    content: '★'; 
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: var(--star-fill, 0);
+    height: 100%;
+    color: #FFD700; 
+    overflow: hidden;
+    z-index: 1;
+  }
+  
+  .product-rating .star.partial::before {
+    width: var(--star-fill, 0);
+  }
+  
+  .product-rating .star.filled::before {
+    width: 100%;
+  }

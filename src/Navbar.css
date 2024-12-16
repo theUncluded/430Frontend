@@ -1,4 +1,3 @@
-/* Navbar container */
 .navbar {
     background-color: #4b93ff;
     height: 80px;
@@ -47,24 +46,28 @@
 .fa-code {
     margin-left: 1rem;
 }
-/* Search bar centered */
+
 .search-bar-container {
-    flex: 1; /* Takes up space to push nav items to the right */
+    flex: 1; 
     display: flex;
     padding-top: 19px;
-    justify-content: center; /* Centered horizontally */
+    justify-content: center; 
 }
 
 .search-bar-container input {
-    padding: 0px 0px;
-    border-radius: 1px;
+    padding: 10px 15px; /* Increase vertical and horizontal padding for size */
+    border-radius: 15px; /* Adjust for rounded edges */
     border: 1px solid #ccc;
     width: 250px;
     font-size: 1rem;
     outline: none;
+    transition: border-color 0.3s ease; /* Optional: Smooth transition for hover/focus effects */
 }
 
-/* Nav menu aligned to the right but buttons centered */
+.search-bar-container input:focus {
+    border-color: #007BFF; 
+}
+
 .nav-menu {
     display: flex;
     justify-content: right; /* Center the buttons within their space */

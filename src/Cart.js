@@ -1,19 +1,35 @@
 // Cart.js
 
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import { useCart } from './CartContext';
 import './Cart.css';
 
 const Cart = ({ onClose }) => {
     const { cartItems, updateItemQuantity, removeFromCart, checkout } = useCart();
+    const sidebarRef = useRef(null);
     const subtotal = cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
 
     const handleQuantityChange = (productId, quantity) => {
         updateItemQuantity(productId, Number(quantity));
     };
+    
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (sidebarRef.current && !sidebarRef.current.contains(event.target)) {
+                onClose();
+            }
+        };
+
+        document.addEventListener('mousedown', handleClickOutside);
+
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, [onClose]);
+
 
     return (
-        <div className="cart-sidebar open">
+        <div className="cart-sidebar open" ref={sidebarRef}>
             <div className="cart-header">
                 <h2>Your Cart</h2>
                 <button className="close-btn" onClick={onClose}>Close</button>
