@@ -11,7 +11,7 @@ const Login = ({ isOpen, onClose, onLoginSuccess }) => {
     const handleLoginOrRegister = async (e) => {
         e.preventDefault();
 
-        const endpoint = 'http://127.0.0.1:8080/login/';
+        const endpoint = 'https://four30finalback-1.onrender.com/login/';
         const payload = { email, password, isRegistering, name: userName, address };
 
         try {

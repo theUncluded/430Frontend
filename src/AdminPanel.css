@@ -122,3 +122,35 @@ body {
       flex-direction: column;
   }
 }
+.product-thumbnail {
+  width: 75px;
+  height: 75px;
+  margin-right: 15px;
+  border-radius: 5px;
+  object-fit: cover;
+}
+
+.product-details {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.product-info {
+  flex: 1;
+}
+
+.product-item {
+  margin-bottom: 20px;
+  padding: 15px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.edit-buttons button {
+  margin: 5px;
+}

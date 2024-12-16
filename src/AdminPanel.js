@@ -1,117 +1,99 @@
 import React, { useState, useEffect } from 'react';
-import './AdminPanel.css';  // Import the CSS file
+import './AdminPanel.css';
 
 const AdminPanel = () => {
     const [products, setProducts] = useState([]);
-    const [editingProduct, setEditingProduct] = useState(null); // Track the product being edited
+    const [editingProduct, setEditingProduct] = useState(null);
     const [updatedProduct, setUpdatedProduct] = useState({
         name: '',
-        price: '',
-        stock: ''
+        stock: '',
+        price: ''
     });
     const [newProduct, setNewProduct] = useState({
         name: '',
         price: '',
         stock: '',
-        category: ''
+        category: '',
+        thumbnail: ''
     });
 
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
-    // Fetch products data from the root route
-    // Fetch products data from the API
     useEffect(() => {
-        const fetchProducts = async () => {
-            try {
-                const response = await fetch('https://nrrj2nu1b2.execute-api.us-east-1.amazonaws.com/dev');
-                if (!response.ok) {
-                    throw new Error(`HTTP Error: ${response.status}`);
-                }
-                const data = await response.json();
-                setProducts(data);
-            } catch (err) {
-                console.error('Error fetching products:', err);
-                setError('Failed to load products.');
-            } finally {
-                setLoading(false);
-            }
-        };
+        fetch('https://four30finalback-1.onrender.com/')
+            .then(response => response.json())
+            .then(data => setProducts(data))
+            .catch(error => console.error('Error fetching products:', error));
+    }, []);
 
-        fetchProducts();
-        }, []);
-        
-    // Handle editing product
     const handleEditProduct = (product) => {
         setEditingProduct(product.product_id);
         setUpdatedProduct({
             name: product.product_name,
-            price: product.price,
-            stock: product.stock
+            stock: product.stock,
+            price: product.price
         });
     };
 
-    // Handle updating the product
-    const handleUpdateProduct = async (productId) => {
-        const response = await fetch('https://nrrj2nu1b2.execute-api.us-east-1.amazonaws.com/dev/update', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                product_id: productId,
-                new_name: updatedProduct.name,
-                new_price: updatedProduct.price,
-                new_stock: updatedProduct.stock,
-            }),
-        });
+    const handleCancelEdit = () => {
+        setEditingProduct(null);
+        setUpdatedProduct({ name: '', stock: '', price: '' });
+    };
 
-        const data = await response.json();
-        if (data.success) {
-            alert('Product updated successfully');
-            setProducts(products.map(product =>
-                product.product_id === productId ? { ...product, ...updatedProduct } : product
+    const handleUpdateProduct = async (productId) => {
+        try {
+            const response = await fetch(`https://four30finalback-1.onrender.com/admin/update`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    product_id: productId,
+                    new_name: updatedProduct.name,
+                    new_stock: updatedProduct.stock,
+                    new_price: updatedProduct.price
+                })
+            });
+            const result = await response.json();
+            alert(result.message);
+
+            setProducts(products.map(product => 
+                product.product_id === productId
+                    ? { ...product, product_name: updatedProduct.name, stock: updatedProduct.stock, price: updatedProduct.price }
+                    : product
             ));
-            setEditingProduct(null);  // Stop editing
-        } else {
-            alert('Failed to update product');
+
+            handleCancelEdit();
+        } catch (error) {
+            console.error('Error updating product:', error);
         }
     };
 
-    // Handle cancelling the edit
-    const handleCancelEdit = () => {
-        setEditingProduct(null); // Reset editing mode
-        setUpdatedProduct({
-            name: '',
-            price: '',
-            stock: ''
-        }); // Clear input fields
-    };
-
-    // Handle adding a new product
     const handleAddProduct = async () => {
-        const response = await fetch('https://nrrj2nu1b2.execute-api.us-east-1.amazonaws.com/dev/add_product', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                new_p_name: newProduct.name,
-                new_p_price: newProduct.price,
-                new_p_stock: newProduct.stock,
-                new_p_cat: newProduct.category
-            }),
-        });
+        try {
+            const response = await fetch('https://four30finalback-1.onrender.com/add_product', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    new_p_name: newProduct.name,
+                    new_p_price: newProduct.price,
+                    new_p_stock: newProduct.stock,
+                    new_p_cat: newProduct.category
+                })
+            });
+            const result = await response.json();
+            alert(result.message);
 
-        const data = await response.json();
-        if (data.success) {
-            alert('Product added successfully');
-            setProducts([...products, newProduct]); // Update products list
-            setNewProduct({ name: '', price: '', stock: '', category: '' }); // Reset form
-        } else {
-            alert('Failed to add product');
+            fetch('https://four30finalback-1.onrender.com/')
+                .then(response => response.json())
+                .then(data => setProducts(data))
+                .catch(error => console.error('Error fetching products:', error));
+
+            setNewProduct({ name: '', price: '', stock: '', category: '', thumbnail: '' });
+        } catch (error) {
+            console.error('Error adding product:', error);
         }
     };
 
     return (
         <div className="admin-panel">
-            <h2>Admin Panel</h2>
-            
+            <h1>Admin Panel</h1>
             <div className="stock-management-container">
                 <div className="stock-management">
                     <h3>Manage Products</h3>
@@ -119,7 +101,6 @@ const AdminPanel = () => {
                         {products.map(product => (
                             <li key={product.product_id} className="product-item">
                                 {editingProduct === product.product_id ? (
-                                    // Display inputs if product is being edited
                                     <div className="product-edit">
                                         <input
                                             type="text"
@@ -145,9 +126,11 @@ const AdminPanel = () => {
                                         </div>
                                     </div>
                                 ) : (
-                                    // Display product details if not editing
                                     <div className="product-details">
-                                        <strong>{product.product_name}</strong> - ${product.price} - {product.stock} in stock
+                                        <img src={`/Images/${product.product_id}.jpg`} alt={product.product_name}  onError={(e) => e.target.src = '/images/default.jpg'} className='product-thumbnail'/>
+                                        <div className="product-info">
+                                            <strong>{product.product_name}</strong> - ${product.price} - {product.stock} in stock
+                                        </div>
                                         <button onClick={() => handleEditProduct(product)}>Edit</button>
                                     </div>
                                 )}
@@ -155,32 +138,37 @@ const AdminPanel = () => {
                         ))}
                     </ul>
                 </div>
-
                 <div className="stock-creation">
                     <h3>Add New Product</h3>
                     <input
                         type="text"
-                        placeholder="Product Name"
                         value={newProduct.name}
                         onChange={e => setNewProduct({ ...newProduct, name: e.target.value })}
+                        placeholder="Name"
                     />
                     <input
                         type="number"
-                        placeholder="Price"
                         value={newProduct.price}
                         onChange={e => setNewProduct({ ...newProduct, price: e.target.value })}
+                        placeholder="Price"
                     />
                     <input
                         type="number"
-                        placeholder="Stock"
                         value={newProduct.stock}
                         onChange={e => setNewProduct({ ...newProduct, stock: e.target.value })}
+                        placeholder="Stock"
                     />
                     <input
                         type="text"
-                        placeholder="Category"
                         value={newProduct.category}
                         onChange={e => setNewProduct({ ...newProduct, category: e.target.value })}
+                        placeholder="Category"
+                    />
+                    <input
+                        type="text"
+                        value={newProduct.thumbnail}
+                        onChange={e => setNewProduct({ ...newProduct, thumbnail: e.target.value })}
+                        placeholder="Thumbnail URL"
                     />
                     <button onClick={handleAddProduct}>Add Product</button>
                 </div>

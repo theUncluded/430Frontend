@@ -156,7 +156,7 @@ const ProductList = () => {
                 <div className="products">
                     {filteredProducts.map(product => (
                         <div key={product.product_id} className="product-card">
-                            <img src={`/Images/p${product.product_id}.jpg`} alt={product.product_name} onError={(e) => e.target.src = '/images/default.jpg'} />
+                            <img src={`/Images/${product.product_id}.jpg`} alt={product.product_name} onError={(e) => e.target.src = '/images/default.jpg'} />
                             <p className="product-rating">Rating: {product.rating}</p>
                             <div className="product-info">
                                 <p className="product-title" title={product.product_name}>{product.product_name}</p>

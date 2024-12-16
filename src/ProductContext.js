@@ -11,7 +11,7 @@ export const ProductProvider = ({ children }) => {
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const response = await fetch('https://nrrj2nu1b2.execute-api.us-east-1.amazonaws.com/dev');
+                const response = await fetch('https://four30finalback-1.onrender.com/');
                 const data = await response.json();
                 setProducts(data);
             } catch (error) {
